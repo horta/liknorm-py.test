@@ -1,0 +1,23 @@
+os:
+  - linux
+  - osx
+language: c
+sudo: required
+script:
+  - bash <(curl -fsSL https://raw.githubusercontent.com/limix/liknorm/master/install)
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      test -e /usr/local/include/liknorm.h;
+      test -e /usr/local/lib/libliknorm.so;
+      test -e /usr/local/lib/libliknorm_static.a;
+    fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      test -e /usr/local/include/liknorm.h;
+      test -e /usr/local/lib/libliknorm.dylib;
+      test -e /usr/local/lib/libliknorm_static.a;
+    fi
+notifications:
+  email:
+    recipients:
+    - danilo.horta@gmail.com
+    on_success: change
+    on_failure: always
