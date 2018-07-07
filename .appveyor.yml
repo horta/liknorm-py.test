@@ -17,7 +17,7 @@ install:
   - conda update -q conda
   - conda info -a
   - conda install --yes cffi numpy pip pytest
-  - python -m pip install .
+  - python -m pip install liknorm
 
 test_script:
   - python -c "import liknorm; import sys; sys.exit(liknorm.test());"
