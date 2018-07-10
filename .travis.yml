@@ -10,7 +10,7 @@ matrix:
       language: generic
       before_install:
         - brew update
-        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg -O miniconda.sh;
+        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
 install:
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
