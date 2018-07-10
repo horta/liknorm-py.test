@@ -1,9 +1,19 @@
 language: python
 python:
   - "3.6"
+  - "3.7"
+matrix:
+  include:
+    - sudo: required
+      before_install:
+        - sudo apt-get update
+        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    - os: osx
+      language: generic
+      before_install:
+        - brew update
+        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg -O miniconda.sh;
 install:
-  - sudo apt-get update
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
@@ -11,7 +21,6 @@ install:
   - conda update -q conda
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION cffi numpy pip pytest
   - source activate test-environment
-  - bash <(curl -fsSL https://raw.githubusercontent.com/limix/liknorm/master/install)
   - python -m pip install liknorm
 
 script:
@@ -21,5 +30,5 @@ notifications:
   email:
     recipients:
     - danilo.horta@gmail.com
-    on_success: change
+    on_success: never
     on_failure: always
