@@ -1,9 +1,17 @@
-language: python
-python:
-  - "3.6"
+matrix:
+  include:
+    - sudo: required
+      language: python
+      python: 3.6
+      before_install:
+        - sudo apt-get update
+        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    - os: osx
+      language: generic
+      before_install:
+        - brew update
+        - wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
 install:
-  - sudo apt-get update
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
