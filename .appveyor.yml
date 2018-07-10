@@ -12,7 +12,6 @@ init:
 
 install:
   - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
-  - powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/limix/liknorm/master/install.bat', 'install.bat')" && install.bat
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda install --yes cffi numpy pip pytest

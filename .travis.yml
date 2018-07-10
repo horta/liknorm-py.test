@@ -11,7 +11,6 @@ install:
   - conda update -q conda
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION cffi numpy pip pytest
   - source activate test-environment
-  - bash <(curl -fsSL https://raw.githubusercontent.com/limix/liknorm/master/install)
   - python -m pip install liknorm
 
 script:
@@ -21,5 +20,5 @@ notifications:
   email:
     recipients:
     - danilo.horta@gmail.com
-    on_success: change
+    on_success: never
     on_failure: always
